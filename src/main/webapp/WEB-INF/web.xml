@@ -4,4 +4,35 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+  
+  <filter>
+    <filter-name>myFilter</filter-name>
+    <filter-class>me.sseob.MyFilter</filter-class>
+  </filter>
+  
+  <filter-mapping>
+    <filter-name>myFilter</filter-name>
+    <servlet-name>hello</servlet-name>
+  </filter-mapping>
+  
+<!--  servlet context listener 를 spring 에서 제공하는 ContextLoaderListener 로 변경해보자-->
+<!--  <listener>-->
+<!--    <listener-class>me.sseob.MyListener</listener-class>-->
+<!--  </listener>-->
+  
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+  
+  
+  
+  <servlet>
+    <servlet-name>hello</servlet-name>
+    <servlet-class>me.sseob.HelloServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>hello</servlet-name>
+    <url-pattern>/hello</url-pattern>
+  </servlet-mapping>
 </web-app>

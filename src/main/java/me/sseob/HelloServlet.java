@@ -10,7 +10,7 @@ public class HelloServlet extends HttpServlet {
 
     @Override
     public void init() throws ServletException {
-        System.out.println("init");
+        System.out.println("servlet init");
     }
 
     @Override
@@ -19,9 +19,13 @@ public class HelloServlet extends HttpServlet {
         resp.getWriter().println("<html>");
         resp.getWriter().println("<head>");
         resp.getWriter().println("<body>");
-        resp.getWriter().println("<h1>hello servlet</h1>");
+        resp.getWriter().println("<h1>hello, " + getName() + "</h1>");
         resp.getWriter().println("</body>");
         resp.getWriter().println("</html>");
+    }
+
+    private Object getName() {
+        return getServletContext().getAttribute("name");
     }
 
     @Override
