@@ -1,5 +1,8 @@
 package me.sseob;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.web.context.WebApplicationContext;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -16,16 +19,16 @@ public class HelloServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         System.out.println("do Get");
+
+        ApplicationContext context = (ApplicationContext) getServletContext().getAttribute(WebApplicationContext.ROOT_WEB_APPLICATION_CONTEXT_ATTRIBUTE);
+        HelloService helloService = context.getBean(HelloService.class);
+        
         resp.getWriter().println("<html>");
         resp.getWriter().println("<head>");
         resp.getWriter().println("<body>");
-        resp.getWriter().println("<h1>hello, " + getName() + "</h1>");
+        resp.getWriter().println("<h1>hello, " + helloService.getName() + "</h1>");
         resp.getWriter().println("</body>");
         resp.getWriter().println("</html>");
-    }
-
-    private Object getName() {
-        return getServletContext().getAttribute("name");
     }
 
     @Override
