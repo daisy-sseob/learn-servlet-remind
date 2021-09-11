@@ -11,6 +11,6 @@
     <title>Title</title>
 </head>
 <body>
-    <h1>hello simple.jsp</h1>
+    <h1>hello sample.jsp</h1>
 </body>
 </html>

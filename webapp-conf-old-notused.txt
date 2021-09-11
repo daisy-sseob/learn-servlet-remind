@@ -1,8 +1,5 @@
-<!DOCTYPE web-app PUBLIC
- "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
- "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
-<web-app>
+<not use>
   <display-name>Archetype Created Web Application</display-name>
   
   <!-- context parameter는 filter보다 먼저 등록이 되어야함 -->
@@ -15,6 +12,21 @@
     <param-name>contextConfigLocation</param-name>
     <param-value>me.sseob.Appconfig</param-value>
   </context-param>
+  
+  <filter>
+    <filter-name>myFilter</filter-name>
+    <filter-class>me.sseob.MyFilter</filter-class>
+  </filter>
+  
+  <filter-mapping>
+    <filter-name>myFilter</filter-name>
+    <servlet-name>hello</servlet-name>
+  </filter-mapping>
+  
+<!--  servlet context listener 를 spring 에서 제공하는 ContextLoaderListener 로 변경해보자-->
+<!--  <listener>-->
+<!--    <listener-class>me.sseob.MyListener</listener-class>-->
+<!--  </listener>-->
   
   <!--
       ContextLoaderListener
@@ -30,21 +42,12 @@
   </listener>
   
   <servlet>
-    <servlet-name>app</servlet-name>
-    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-    <init-param>
-      <param-name>contextClass</param-name>
-      <param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>
-    </init-param>
-    <init-param>
-      <param-name>contextConfigLocation</param-name>
-      <param-value>me.sseob.WebConfig</param-value>
-    </init-param>
+    <servlet-name>hello</servlet-name>
+    <servlet-class>me.sseob.HelloServlet</servlet-class>
   </servlet>
   
   <servlet-mapping>
-    <servlet-name>app</servlet-name>
-    <url-pattern>/app/*</url-pattern>x
+    <servlet-name>hello</servlet-name>
+    <url-pattern>/hello</url-pattern>
   </servlet-mapping>
-  
 </web-app>
