@@ -16,10 +16,20 @@
     <param-value>me.sseob.Appconfig</param-value>
   </context-param>
   
+  <!-- 
+    Root WebApplicationContext
+    Appconfig의 내용을 토대로 bean을 등록한다.
+    Root WebApplicationContext에 등록된 Bean들은 Servlet ApplicationContext들이 모두 참조 가능하다.
+  -->
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
   
+  <!-- 
+    DispatcherServlet 등록하기
+    Servlet ApplicationContext가 DispatcherServlet마다 생성되는데, ContextLoaderListener를 통해 등록된
+    Root WebApplicationContext를 상속받는 ApplicationContext가 생성된다.
+  -->
   <servlet>
     <servlet-name>app</servlet-name>
     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -27,6 +37,8 @@
       <param-name>contextClass</param-name>
       <param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>
     </init-param>
+    
+    <!-- WebConfig의 내용을 토대로 bean을 등록한다. -->
     <init-param>
       <param-name>contextConfigLocation</param-name>
       <param-value>me.sseob.WebConfig</param-value>
