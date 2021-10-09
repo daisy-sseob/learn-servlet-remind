@@ -1,6 +1,6 @@
 # 🕶 Servlet을 학습하고 Remind합니다.
 
-## branch 설명
+## 🌱 branch 설명
 - servlet-ioc branch 
   - 기본적인 servlet project에 spring 의존성을 추가하고 IOC container와 Dispatcher Servlet을 연동합니다.
   - 설정과 개념에 대해서 집중적으로 학습한 branch입니다.
@@ -10,3 +10,8 @@
 - main branch
   - web.xml 설정을 WebApplicationInitializer를 통해 java config로 바꾸었으며
   - Root WebApplicationContext, Servlet ApplicagittionContext의 상속구조를 걷어내고 MVC 설정이 추가로 입혀진 branch입니다.
+
+
+## 🌻 Most important Image in This Repository
+
+![/mvc-context-hierarchy.png](mvc-context-hierarchy.png)
