@@ -2,25 +2,13 @@ package me.sseob;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.stereotype.Controller;
 
-/*
-	EnableWebMvc을 사용하면 DelegatingWebMvcConfiguration를 import를 하기때문에
-	WebMvcConfigurationSupport class가 여러가지 기본 전략들을 등록시켜준다.
-	Dispatcherservlet.properties file에 정의되어있는 기본전략 이외에 여러가지 부분들도.
-	
-	Bean 들을 일일이 등록하는것이 아니라 편리하게 등록이 가능하다.
-	
-	WebMvcConfigurer를 통해 @EnableWebMvc가 Delegation구조로 import하는 여러가지 Bean설정을 customize할 수 있다.
+/**
+ * Dispatcher Servlet이 등록시켜줄 ApplicationContext. 즉 Servlet WebApplicationContext의 설정.
  */
 @Configuration
-@ComponentScan
-@EnableWebMvc 
-public class WebConfig implements WebMvcConfigurer {
-	@Override
-	public void configureViewResolvers(ViewResolverRegistry registry) {
-		registry.jsp("/WEB-INF/", ".jsp"); 
-	}
+@ComponentScan(useDefaultFilters = false, includeFilters = @ComponentScan.Filter(Controller.class))
+public class WebConfig {
+	
 }
