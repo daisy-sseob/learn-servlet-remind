@@ -9,4 +9,4 @@
 
 - main branch
   - web.xml 설정을 WebApplicationInitializer를 통해 java config로 바꾸었으며
-  - Root WebApplicationContext, Servlet ApplicationContext의 상속구조를 걷어내고 MVC 설정이 추가로 입혀진 branch입니다.
+  - Root WebApplicationContext, Servlet ApplicagittionContext의 상속구조를 걷어내고 MVC 설정이 추가로 입혀진 branch입니다.
